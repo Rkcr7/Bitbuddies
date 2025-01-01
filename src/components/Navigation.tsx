@@ -22,18 +22,25 @@ const Navigation = () => {
     <Button
       variant="secondary"
       size="sm"
-      className="flex items-center space-x-2"
+      className="flex items-center space-x-2 px-3 py-2 relative"
     >
+      <span className="absolute inset-0 rounded-lg" style={{
+        background: 'linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2))',
+        boxShadow: '0 0 4px rgba(255, 255, 255, 0.4), 0 0 8px rgba(255, 255, 255, 0.2), 0 0 12px rgba(255, 255, 255, 0.1)',
+        border: '1px solid rgba(255, 255, 255, 0.3)',
+        padding: '1px'
+      }}></span>
+      
       {user?.avatar_url ? (
         <img
           src={user.avatar_url}
           alt={user.full_name}
-          className="w-5 h-5 rounded-full"
+          className="w-8 h-8 rounded-full relative z-10 -ml-1"
         />
       ) : (
-        <UserCircle className="w-5 h-5" />
+        <UserCircle className="w-8 h-8 relative z-10 -ml-1" />
       )}
-      <span className="hidden sm:inline">{user?.username}</span>
+      <span className="text-base relative z-10">{user?.username}</span>
     </Button>
   );
 

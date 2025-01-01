@@ -50,26 +50,72 @@
       0 0 20px rgba(0, 255, 255, 0.1);
   }
 
-  /* Matrix-like text effect */
-  .matrix-text {
-    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #0f0;
-    animation: glow 1.5s ease-in-out infinite alternate;
+  /* Glass effect */
+  .glass {
+    @apply backdrop-blur-md bg-white/10 border border-white/20;
   }
 
-  /* Code block styling */
-  .code-block {
-    @apply font-mono bg-black/50 rounded-lg p-4 border border-accent-blue/20;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  /* Neon text effect */
+  .neon-text {
+    @apply font-bold;
+    text-shadow: 
+      0 0 5px theme('colors.accent-blue'),
+      0 0 10px theme('colors.accent-blue'),
+      0 0 20px theme('colors.accent-blue');
+  }
+
+  /* Gradient border */
+  .gradient-border {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      padding: 1px;
+      border-radius: inherit;
+      background: linear-gradient(
+        45deg,
+        theme('colors.accent-blue'),
+        theme('colors.accent-green'),
+        theme('colors.accent-magenta')
+      );
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+  }
+
+  /* Hover card effect */
+  .hover-card {
+    @apply transition-all duration-300 ease-out;
+    &:hover {
+      @apply transform -translate-y-1 shadow-lg shadow-accent-blue/20;
+    }
+  }
+
+  /* Animated background gradient */
+  .animated-gradient {
+    background: linear-gradient(
+      45deg,
+      theme('colors.accent-blue'),
+      theme('colors.accent-green'),
+      theme('colors.accent-magenta'),
+      theme('colors.accent-blue')
+    );
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
   }
 }
 
-@keyframes glow {
-  from {
-    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #0f0;
-  }
-  to {
-    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
-  }
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Cyberpunk-inspired grid */

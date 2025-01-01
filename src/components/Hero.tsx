@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import Button from './ui/Button';
 import Terminal from './ui/Terminal';
 
 const Hero = () => {
+  const navigate = useNavigate();
   const commands = [
     'npm create bit-buddies@latest',
     'cd bit-buddies',
@@ -11,6 +13,15 @@ const Hero = () => {
     'Starting development server...',
     'Ready for coding! 🚀'
   ];
+
+  const handleGetStarted = () => {
+    navigate('/challenges');
+  };
+
+  const handleLearnMore = () => {
+    const featuresSection = document.querySelector('#features');
+    featuresSection?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen pt-16 flex items-center relative overflow-hidden">
@@ -31,11 +42,21 @@ const Hero = () => {
             <p className="text-xl text-gray-400 mb-8">
               Join our community of learners and master programming through fun, interactive challenges.
             </p>
-            <div className="flex space-x-4">
-              <Button variant="primary" size="md">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={handleGetStarted}
+                className="sm:w-auto hover:scale-105 transition-transform duration-300"
+              >
                 Get Started
               </Button>
-              <Button variant="secondary" size="md">
+              <Button
+                variant="secondary"
+                size="lg"
+                onClick={handleLearnMore}
+                className="sm:w-auto hover:scale-105 transition-transform duration-300"
+              >
                 Learn More
               </Button>
             </div>

@@ -64,10 +64,10 @@ const DiscussionList = () => {
             transition={{ delay: index * 0.1 }}
             className="p-4 bg-black/30 rounded-lg hover:bg-black/40 transition-colors"
           >
-            <div className="flex justify-between items-start">
-              <div>
-                <h3 className="text-lg font-semibold mb-2">{discussion.title}</h3>
-                <div className="flex items-center space-x-4 text-sm text-gray-400">
+            <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:justify-between sm:items-start">
+              <div className="flex-1 min-w-0">
+                <h3 className="text-lg font-semibold mb-2 line-clamp-2">{discussion.title}</h3>
+                <div className="flex flex-wrap gap-2 items-center text-sm text-gray-400">
                   <span>by {discussion.author}</span>
                   <span className="px-2 py-1 bg-accent-blue/20 rounded-full text-accent-blue">
                     {discussion.category}
@@ -75,18 +75,18 @@ const DiscussionList = () => {
                   <span>{discussion.timeAgo}</span>
                 </div>
               </div>
-              <div className="flex items-center space-x-4 text-sm text-gray-400">
-                <span className="flex items-center">
-                  <MessageSquare className="w-4 h-4 mr-1" />
-                  {discussion.replies}
+              <div className="flex items-center gap-4 text-sm text-gray-400 self-start">
+                <span className="flex items-center gap-1">
+                  <MessageSquare className="w-4 h-4" />
+                  <span className="hidden sm:inline">Replies:</span> {discussion.replies}
                 </span>
-                <span className="flex items-center">
-                  <ThumbsUp className="w-4 h-4 mr-1" />
-                  {discussion.likes}
+                <span className="flex items-center gap-1">
+                  <ThumbsUp className="w-4 h-4" />
+                  <span className="hidden sm:inline">Likes:</span> {discussion.likes}
                 </span>
-                <span className="flex items-center">
-                  <Eye className="w-4 h-4 mr-1" />
-                  {discussion.views}
+                <span className="flex items-center gap-1">
+                  <Eye className="w-4 h-4" />
+                  <span className="hidden sm:inline">Views:</span> {discussion.views}
                 </span>
               </div>
             </div>
